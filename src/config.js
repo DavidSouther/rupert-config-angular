@@ -2,7 +2,7 @@ var Path = require('path');
 
 var TW = require(Path.join(
     __dirname,
-    '../node_modules/rupert/node_modules/stassets/lib/Watchers/Template'
+    '../../rupert/node_modules/stassets/lib/Watchers/Template'
 ));
 TW.prototype.getModuleName = function(shortPath){
     var module = shortPath.replace(/\//g, '.') + '.template';
