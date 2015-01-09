@@ -1,18 +1,19 @@
 Path = require('path')
-config =
+server =
   name: 'rupert-config-angular.test'
   root: __dirname
+  plugins:
+    dependencies: {}
   stassets:
     root: './'
     vendors:
       prefix: ['.']
-      config:
-        dependencies: {}
       js: ['extra.js']
 
-config.stassets.vendors.config.dependencies[Path.relative(__dirname, '../src/config')] = yes
+server.plugins.dependencies[Path.resolve(__dirname, '../src/config')] = yes
 
-rupert = require('rupert')(config)
+rupert = require('rupert')(server)
+config = rupert.config
 unless describe?
   rupert.start()
 else
@@ -27,13 +28,14 @@ else
       config.stassets.vendors.js[9].should.equal['extra.js']
 
     it 'injects into the $templateCache', (done)->
-      rupert.app.stassets.promise.then ->
-        require('supertest')(rupert.app)
-        .get('/templates.js')
-        .expect(200)
-        .expect ({text})->
-            text.indexOf('window').should.equal -1
-            text.indexOf('$templateCache').should.be.greaterThan -1
-            text.indexOf('fixtures').should.be.greaterThan -1
-            return
-        .end(done)
+      rupert.then ->
+        rupert.app.stassets.promise.then ->
+          require('supertest')(rupert.app)
+          .get('/templates.js')
+          .expect(200)
+          .expect ({text})->
+              text.indexOf('window').should.equal -1
+              text.indexOf('$templateCache').should.be.greaterThan -1
+              text.indexOf('fixtures').should.be.greaterThan -1
+              return
+          .end(done)

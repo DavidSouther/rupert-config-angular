@@ -31,16 +31,14 @@ TW.prototype.cache = function(path){
 TW.prototype.concat = cts.SourceMap.prototype.concat; // Skip the globals.
 
 module.exports = function (config){
-    config.scripts = config.scripts || {};
-    config.scripts.types = [
+    config.prepend('stassets.scripts.types', [
         'main', 'provider', 'filter', 'service', 'controller', 'directive'
-    ].concat(config.scripts.types || []);
+    ]);
 
-    config.vendors = config.vendors || {};
-    config.vendors.prefix = config.vendors.prefix || [];
-    config.vendors.prefix.push(Path.resolve(__dirname, '../node_modules'));
+    var nm = Path.resolve(__dirname, '../node_modules');
+    config.append('stassets.vendors.prefix', nm);
 
-    config.vendors.js = [
+    config.prepend('stassets.vendors.js', [
         'angular-builds/angular.min.js',
         'angular-builds/angular-cookies.min.js',
         'angular-builds/angular-resource.min.js',
@@ -50,7 +48,7 @@ module.exports = function (config){
         'angular-builds/angular-messages.min.js',
         'angular-builds/angular-aria.min.js',
         'angular-ui-router/release/angular-ui-router.js',
-    ].concat(config.vendors.js || []);
-
-    return config;
+    ]);
 };
+
+module.exports.Gruntfile = require('./Gruntfile');
