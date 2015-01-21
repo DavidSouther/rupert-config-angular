@@ -3,6 +3,12 @@ var Path = require('path');
 var cts = require('rupert').Stassets.constructors;
 
 var TW = cts.Template;
+var _shortPath = TW.prototype.getShortPath;
+TW.prototype.getShortPath = function(path){
+    var shortName = _shortName.call(this, path);
+    return shortName.replace(/^\//, '');
+};
+
 TW.prototype.getModuleName = function(shortPath){
     var module = shortPath.replace(/\//g, '.') + '.template';
     if (moduleRoot = this.config.templates.baseModule){
