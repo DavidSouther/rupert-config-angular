@@ -10,6 +10,7 @@ Angular](https://cdn.rawgit.com/DavidSouther/rupert/master/src/assets/logos/Rupe
 
 ## Changelog
 
+* **0.1.2** *2015-01-21* Unify module and path output for templates in Windos.
 * **0.1.1** *2015-01-09* Renamed to rupert-plugin-angular.
 * **0.0.8** *2015-01-01* Allow user-defined script types.
 * **0.0.7** *2014-12-29* Generate $templateCache
