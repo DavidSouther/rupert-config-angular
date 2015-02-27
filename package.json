@@ -19,6 +19,7 @@
     "angular-builds": "^1.3.0",
     "angular-mocks": "^1.3.8",
     "angular-ui-router": "^0.2.11",
+    "jquery": "^2.1.3",
     "mockasing": "^0.1.2"
   },
   "devDependencies": {

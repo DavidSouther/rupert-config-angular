@@ -5,7 +5,7 @@ var cts = require('rupert').Stassets.constructors;
 var TW = cts.Template;
 var _shortPath = TW.prototype.getShortPath;
 TW.prototype.getShortPath = function(path){
-    var shortName = _shortName.call(this, path);
+    var shortName = _shortPath.call(this, path);
     return shortName.replace(/^\//, '');
 };
 
@@ -54,6 +54,12 @@ module.exports = function (config){
         'angular-builds/angular-aria.min.js',
         'angular-ui-router/release/angular-ui-router.js',
     ]);
+
+    if(config.find('stassets.angular.useJquery', false)){
+        config.prepend('stassets.vendors.js', [
+            'jquery/dist/jquery.min.js'
+        ]);
+    }
 };
 
 module.exports.Gruntfile = require('./Gruntfile');
