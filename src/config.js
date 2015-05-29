@@ -43,6 +43,16 @@ module.exports = function (config){
     var nm = Path.resolve(__dirname, '../node_modules');
     config.append('stassets.vendors.prefix', nm);
 
+    if(config.find('stassets.angular.uiRouter', false)){
+      config.prepend('stassets.vendors.js', [
+        'angular-ui-router/release/angular-ui-router.js'
+      ]);
+    } else {
+      config.prepend('stassets.vendors.js', [
+        'angular-builds/angular-route.min.js'
+      ]);
+    }
+
     config.prepend('stassets.vendors.js', [
         'angular-builds/angular.min.js',
         'angular-builds/angular-cookies.min.js',
@@ -54,15 +64,6 @@ module.exports = function (config){
         'angular-builds/angular-aria.min.js'
     ]);
 
-    if(config.find('stassets.angular.uiRouter', false)){
-      config.prepend('stassets.vendors.js', [
-        'angular-ui-router/release/angular-ui-router.js'
-      ]);
-    } else {
-      config.prepend('stassets.vendors.js', [
-        'angular-builds/angular-route.min.js'
-      ]);
-    }
 
     if(config.find('stassets.angular.useJquery', false)){
         config.prepend('stassets.vendors.js', [
