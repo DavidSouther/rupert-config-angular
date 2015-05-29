@@ -1,6 +1,6 @@
 {
   "name": "rupert-plugin-angular",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Rupert configuration to use Angular with ui-router.",
   "repository": "git@github.com:Rupert/rupert-plugin-angular.git",
   "main": "src/config.js",
