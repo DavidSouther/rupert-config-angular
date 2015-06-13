@@ -2,7 +2,7 @@
 
 Loads core Angular modules (ng, touch, resource, cookies, messages,
 animations, touch), as well as angular-ui-router. (Skips ng-touch). Contains no
-styling. (If you're getting started, you probably want [Rupert](https://github.com/RupertJS/rupert#rupert) itself.)
+styling. (If you're getting started, you probably want [Rupert](https://rupertjs.io) itself.)
 
 ![Rupert
 Angular](https://cdn.rawgit.com/DavidSouther/rupert/master/src/assets/logos/Rupert_Angular.svg)
